@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC Form</title>
+    <!--Bootstrap Include in HTML-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        function OrderClick() {
+            document.getElementById("lblName").innerHTML = document.getElementById("textName").value;
+            document.getElementById("lblMobile").innerHTML = document.getElementById("txtMobile").value;
+            var mealName = "";
+            var mealCost = 0;
+            var optburger = document.getElementById("omg_burger");
+            var optpizza = document.getElementById("omg_pizza");
+            if (optburger.checked) {
+                mealName = optburger.value;
+                mealCost = 120;
+            }
+            if (optpizza.checked) {
+                mealName = optpizza.value;
+                mealCost = 150;
+            }
+            var addonName = "";
+            var addonCost = 0;
+            var frenchfries = document.getElementById("FrenchFries");
+            var nuggets = document.getElementById("Nuggets");
+            if (frenchfries.checked) {
+                addonCost = 40;
+                addonName += frenchfries.value + "<br>";
+                mealCost = mealCost + addonCost;
+            }
+            if (nuggets.checked) {
+                addonCost = 80;
+                addonName += nuggets.value;
+                mealCost = mealCost + addonCost;
+            }
+            document.getElementById("lblMeal").innerHTML = mealName;
+            document.getElementById("lblAdon").innerHTML = addonName;
+            document.getElementById("lblTotal").innerHTML = mealCost;
+        }
+    </script>
+
+</head>
+
+<body style="background-color: maroon;">
+    <div class="container-fluid">
+        <header>
+            <img src="/images/Kfc1.png" alt="KFCIMAGE" width="100%" height="180">
+        </header>
+        <section>
+            <div class="accordion" id="OrderForm">
+                <!--Customer Info-->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <button class="btn btn-danger w-100" data-bs-target="#Customer"
+                            data-bs-toggle="collapse">Customer
+                            Info
+                        </button>
+                    </div>
+                    <div class="accordion-collapse collapse show" id="Customer" data-bs-parent="#OrderForm">
+                        <div class="accordion-body">
+                            <dl>
+                                <dt>Customer Name</dt>
+                                <input type="text" class="form-control" id="textName">
+                                <dt>Phone Number</dt>
+                                <input type="text" class="form-control" id="txtMobile">
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <!--Meal Info-->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <button class="btn btn-danger w-100" data-bs-target="#meal" data-bs-toggle="collapse">Select
+                            a Meal
+                        </button>
+                    </div>
+                    <div class="accordion-collapse collapse " id="meal" data-bs-parent="#OrderForm">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="../assets/Images/Burger.jpeg" alt="Burger" class="card-img-top"
+                                            height="250">
+                                        <div class="card-header">
+                                            <h2>OMG Burger</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <p><input type="radio" class="form-input-control" name="meal" value="Burger"
+                                                    id="omg_burger">&#8377; 120/-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="../assets/Images/Pizza.jpeg" alt="pizza" class="card-img-top"
+                                            height="250">
+                                        <div class="card-header">
+                                            <h2>OMG Pizza</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <p><input type="radio" class="form-input-control" name="meal" value="Pizza"
+                                                    id="omg_pizza">&#8377; 150/-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Add On-->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <button class="btn btn-danger w-100" data-bs-target="#addon" data-bs-toggle="collapse">Add On
+                        </button>
+                    </div>
+                    <div class="accordion-collapse collapse" id="addon" data-bs-parent="#OrderForm">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="../assets/Images/Fries.jpeg" alt="Fries" class="card-img-top"
+                                            height="350">
+                                        <div class="card-header">
+                                            <h2>French Fries</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <p><input type="checkbox" class="form-check-input" value="French_Fries"
+                                                    id="FrenchFries">&#8377; 40/-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="../assets/Images/Chicken.jpeg" alt="Burger" class="card-img-top"
+                                            height="350" id="Burger">
+                                        <div class="card-header">
+                                            <h2>OMG Nuggets</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <p><input type="checkbox" class="form-check-input" value="Chicken_nuggets"
+                                                    id="Nuggets">&#8377; 80/-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-danger w-100" data-bs-target="#billsummary" data-bs-toggle="modal"
+                    onclick="OrderClick()">Place
+                    Order</button>
+                <div class="modal fade" id="billsummary">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Bill Summary</h3>
+                                <button class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <dl class="row">
+                                    <dt class="col-3">Customer Name</dt>
+                                    <dd class="col-9" id="lblName"></dd>
+                                    <dt class="col-3">Mobile</dt>
+                                    <dd class="col-9" id="lblMobile"></dd>
+                                    <dt class="col-3">Meal</dt>
+                                    <dd class="col-9" id="lblMeal"></dd>
+                                    <dt class="col-3">Ad-ON's</dt>
+                                    <dd class="col-9" id="lblAdon"></dd>
+                                    <dt class="col-3">Total</dt>
+                                    <dd class="col-9" id="lblTotal"></dd>
+                                </dl>
+                            </div>
+                            <div class="modal-footer">
+                                <button data-bs-dismiss="modal" class="btn btn-success">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--Jquery files need to be linked-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
